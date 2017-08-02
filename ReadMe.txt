@@ -1,6 +1,7 @@
 目录：
 	1.InsertionSort直接插入排序
 	2.MergeSort归并排序
+	3.FindMaxSubArray求数组的一个最大子数组
 
 1.InsertionSort 直接插入排序
 排序思想：
@@ -111,19 +112,20 @@ MergeSort(归并排序)伪代码:
 	3）最优解
 		假如有这样一个数组，数组元素大于2并且数组元素里面有正负，那么最大子数组起始元素一定是正整数，每次从正整数开始计算，求出最大的子数组。i为最大子数组起始元素下标，j为最大子数组终止元素下标,maxSum为最大字数组的和
 	   伪代码：
-	   	FindMaxSubArray(A)
+	   	FindMaxSubArray(A)  //注释的代码功能为记录最大子数组起始元素和终止元素的下标
 		flag = maxSum = curSum = 0
-		i = j = 0;
+		//i = j = 0;
 		for m = 0 to A.length
 			curSum = curSum + A[m]
 			if curSum > maxSum
-				if flag != i
-					i = flag
-				j = m
+				//if flag != i
+				//	i = flag
+				//j = m
 				maxSum = curSum
 			if curSum < 0
 				curSum = 0
-				if m < A.length-1
-					if A[m+1] > 0
-						flag = m + 1
-		return i,j,maxSum 
+				//if m < A.length-1
+				//	if A[m+1] > 0
+				//		flag = m + 1
+		//return i,j,maxSum 
+		return maxSum
