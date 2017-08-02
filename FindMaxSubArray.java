@@ -1,9 +1,12 @@
 class FindMaxSubArray{
 	public static void main(String[] args) {
 		int[] A= {13,-2,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};
+		//int[] A = {13,-2,-2,10};
 		//存放最大字数组的起始下标，终止下标，数组和
 		int[] result = new int[3];
-		result = FindMaxSubArray2(A,result,0,A.length-1);
+		//result = FindMaxSubArray1(A,result);
+		//result = FindMaxSubArray2(A,result,0,A.length-1);
+		result = FindMaxSubArray3(A,result);
 		for (int i: result) {
 			System.out.print(i+" ");
 		}
@@ -40,38 +43,39 @@ class FindMaxSubArray{
 			int[] rightResult = new int[3];
 			int[] crossResult = new int[3];
 			leftResult = FindMaxSubArray2(A,leftResult,low,mid);
-			rightResult = FindMaxSubArray2(A,rightResult,mid+1,high);
+			rightResult = FindMaxSubArray2(A,rightResult,mid+1,high);	
 			crossResult = FindMaxCrossingSubArray(A,crossResult,low,mid,high);
+			
 			if(leftResult[2]>=rightResult[2]&&leftResult[2]>=crossResult[2]){
 				result = leftResult;
-				System.out.print("left: ");
-				for(int i:result){
-					System.out.print(i+" ");
-				}
+				// System.out.print("left: ");
+				// for(int i:result){
+				// 	System.out.print(i+" ");
+				// }
 			}
 			else if (rightResult[2]>=leftResult[2]&&rightResult[2]>=crossResult[2]) {
 				result = rightResult;
-				System.out.print("right: ");
-				for(int i:result){
-					System.out.print(i+" ");
-				}
+				//System.out.print("right: ");
+				// for(int i:result){
+				// 	System.out.print(i+" ");
+				// }
 			}else{
 				result = crossResult;
-				System.out.print("cross: ");
-				for(int i:result){
-					System.out.print(i+" ");
-				}
+				// System.out.print("cross: ");
+				// for(int i:result){
+				// 	System.out.print(i+" ");
+				// }
 			}
-			System.out.println();
+			//System.out.println();
 			return result;
 		}
 	}
 
 	//分治过程中用到的辅助函数
 	public static int[] FindMaxCrossingSubArray(int[] A,int[] result,int low,int mid,int high){
-		int leftSum = 0;
+		int leftSum = A[mid];
 		int curLeftSum = 0;
-		int left = 0;
+		int left = mid;
 		for(int i = mid; i >= low; i--){
 			curLeftSum += A[i];
 			if(curLeftSum > leftSum){
@@ -80,9 +84,9 @@ class FindMaxSubArray{
 			}
 		}
 
-		int rightSum = 0;
+		int rightSum = A[mid+1];
 		int curRightSum = 0;
-		int right = 0;
+		int right = mid+1;
 		for(int i = mid+1; i <= high; i++){
 			curRightSum += A[i];
 			if(curRightSum > rightSum){
