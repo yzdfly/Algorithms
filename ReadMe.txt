@@ -1,7 +1,9 @@
 目录：
-	1.InsertionSort直接插入排序
-	2.MergeSort归并排序
-	3.FindMaxSubArray求数组的一个最大子数组
+	1.InsertionSort 直接插入排序
+	分治
+	2.MergeSort 归并排序
+	3.FindMaxSubArray 求数组的一个最大子数组
+	4.SquareMatrixMultiply 矩阵乘法的Strassen算法(未完成)
 
 1.InsertionSort 直接插入排序
 排序思想：
@@ -54,7 +56,7 @@ MergeSort(归并排序)伪代码:
 		Merge(A,p,q,r)
 
 
-3.求数组的一个最大子数组
+3.FindMaxSubArray 求数组的一个最大子数组
 实现内容：
 	假如有这样一个数组，A[] = {13,-2,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};要求得到一个总值最大的子数组。例如A[]的一个最大子数组为A[7..10]={18,20,-7,12}。
 
@@ -129,3 +131,18 @@ MergeSort(归并排序)伪代码:
 				//		flag = m + 1
 		//return i,j,maxSum 
 		return maxSum
+
+
+4.SquareMatrixMultiply 矩阵乘法的Strassen算法(未完成)
+按照矩阵乘法公式计算--->伪代码：
+	Square-Matrix-Multiply(A,B)
+	n = A.rows
+	let C be a new n*n matrix
+	for i = 1 to n
+		for j = 1 to n
+			C(i,j) = 0
+			for k = 1 to n 
+				C(i,j) = C(i,j) + A(i,k) * B(k,j)
+	return C 
+
+5.
